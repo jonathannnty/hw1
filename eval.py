@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import json
+from pathlib import Path
 from dataclasses import asdict
 from typing import Dict, List
 
@@ -87,7 +88,7 @@ async def compare(gold_path: str, model: str, save_dir: str = "") -> None:
     print("variant\tprecision\trecall\tf1\tllm_calls\ttotal_cost_usd")
     for v in variants:
         cfg = PipelineConfig(model=model, prompt_variant=v)
-        save_path = f"{save_dir}/eval_{v}.json" if save_dir else ""
+        save_path = str(Path(save_dir) / f"eval_{v}.json") if save_dir else ""
         report = await evaluate(gold_path, cfg, save_path=save_path)
         print(
             f"{v}\t{report['metrics']['precision']:.3f}\t{report['metrics']['recall']:.3f}\t"
@@ -112,7 +113,7 @@ async def compare_with_profile(
             heuristic_min_score=get_heuristic_threshold(keyword_profile),
             prompt_variant=v,
         )
-        save_path = f"{save_dir}/eval_{provider}_{keyword_profile}_{v}.json" if save_dir else ""
+        save_path = str(Path(save_dir) / f"eval_{provider}_{keyword_profile}_{v}.json") if save_dir else ""
         report = await evaluate(gold_path, cfg, save_path=save_path)
         print(
             f"{v}\t{report['metrics']['precision']:.3f}\t{report['metrics']['recall']:.3f}\t"
@@ -142,7 +143,7 @@ async def tune(
                 heuristic_min_score=get_heuristic_threshold(p),
                 prompt_variant=v,
             )
-            save_path = f"{save_dir}/eval_{provider}_{p}_{v}.json" if save_dir else ""
+            save_path = str(Path(save_dir) / f"eval_{provider}_{p}_{v}.json") if save_dir else ""
             report = await evaluate(gold_path, cfg, save_path=save_path)
             m = report["metrics"]
             cost = report["total_cost_usd"]
@@ -180,7 +181,7 @@ async def tune(
     print(json.dumps({"cost_cap": cost_cap, "target_recall": target_recall, "best": best}, indent=2))
 
     if save_dir:
-        with open(f"{save_dir}/tune_summary_{provider}.json", "w", encoding="utf-8") as f:
+        with open(Path(save_dir) / f"tune_summary_{provider}.json", "w", encoding="utf-8") as f:
             json.dump(
                 {
                     "cost_cap": cost_cap,
@@ -195,7 +196,7 @@ async def tune(
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="HW1 eval harness")
-    p.add_argument("--gold", default="hw1/data/gold_dataset.jsonl")
+    p.add_argument("--gold", default=str(Path(__file__).resolve().parent / "data" / "gold_dataset.jsonl"))
     p.add_argument("--provider", choices=["openai", "anthropic"], default="openai")
     p.add_argument("--model", default="")
     p.add_argument("--variant", choices=["base", "fewshot", "cot"], default="base")

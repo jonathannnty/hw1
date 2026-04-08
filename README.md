@@ -19,20 +19,20 @@ An evaluation harness measures quality (precision/recall/F1) and estimated API c
 
 Run online streaming monitor (pipeline):
 
-- OpenAI: `python firehose.py --mode stream --provider openai --model gpt-4o-mini --keyword-profile balanced --prompt-variant base`
-- Anthropic: `python firehose.py --mode stream --provider anthropic --model claude-haiku-4-5-20251001 --keyword-profile balanced --prompt-variant base`
+- OpenAI: `python pipeline.py --mode stream --provider openai --model gpt-4o-mini --keyword-profile balanced --prompt-variant base`
+- Anthropic: `python pipeline.py --mode stream --provider anthropic --model claude-haiku-4-5-20251001 --keyword-profile balanced --prompt-variant base`
 
 Run eval harness (single configuration):
 
-- `python hw1/eval.py --gold hw1/data/gold_dataset.jsonl --provider anthropic --keyword-profile balanced --variant base --save hw1/eval_anthropic_base.json`
+- `python eval.py --gold data/gold_dataset.jsonl --provider anthropic --keyword-profile balanced --variant base --save eval_anthropic_base.json`
 
 Run eval comparison across prompting styles (base/fewshot/cot):
 
-- `python hw1/eval.py --gold hw1/data/gold_dataset.jsonl --provider anthropic --keyword-profile balanced --compare --save-dir hw1`
+- `python eval.py --gold data/gold_dataset.jsonl --provider anthropic --keyword-profile balanced --compare --save-dir .`
 
 Run tuning across keyword profiles and prompt variants:
 
-- `python hw1/eval.py --gold hw1/data/gold_dataset.jsonl --provider anthropic --tune --cost-cap 0.02 --save-dir hw1`
+- `python eval.py --gold data/gold_dataset.jsonl --provider anthropic --tune --cost-cap 0.02 --save-dir .`
 
 ## Demo Video
 
@@ -67,5 +67,5 @@ Store exported assistant transcripts in the `transcripts/` folder and reference 
 
 ## Notes
 
-- The provided `hw1/data/gold_dataset.jsonl` is a starter labeled dataset scaffold (50 examples).
+- The provided `data/gold_dataset.jsonl` is a starter labeled dataset scaffold (50 examples).
 - You should revise and expand it with task-specific examples for stronger evaluation quality.
