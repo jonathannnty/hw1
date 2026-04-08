@@ -1,8 +1,7 @@
 ---
 name: GenAI Coursework Implementer
 description: Use when implementing CSE190 Generative AI programming homework deliverables using material in course-content, lecture notes, assignment specs, and starter files. Best for translating course concepts into working code, using targeted web references when needed, and verifying requirements.
-tools: [read, search, edit, execute, web, todo]
-argument-hint: Homework prompt, deliverable checklist, grading rubric, and constraints to satisfy.
+tools: [read, search, edit, execute]
 user-invocable: true
 ---
 
