@@ -1,0 +1,96 @@
+{
+  "cost_cap": 0.02,
+  "target_recall": 0.5,
+  "best": {
+    "profile": "recall",
+    "variant": "base",
+    "precision": 1.0,
+    "recall": 0.72,
+    "f1": 0.8372093023255813,
+    "llm_calls": 27,
+    "total_cost_usd": 0.012555
+  },
+  "results": [
+    {
+      "profile": "strict",
+      "variant": "base",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 11,
+      "total_cost_usd": 0.005324
+    },
+    {
+      "profile": "strict",
+      "variant": "fewshot",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 11,
+      "total_cost_usd": 0.005795
+    },
+    {
+      "profile": "strict",
+      "variant": "cot",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 11,
+      "total_cost_usd": 0.005738
+    },
+    {
+      "profile": "balanced",
+      "variant": "base",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 16,
+      "total_cost_usd": 0.007532
+    },
+    {
+      "profile": "balanced",
+      "variant": "fewshot",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 16,
+      "total_cost_usd": 0.008193
+    },
+    {
+      "profile": "balanced",
+      "variant": "cot",
+      "precision": 1.0,
+      "recall": 0.36,
+      "f1": 0.5294117647058824,
+      "llm_calls": 16,
+      "total_cost_usd": 0.008116
+    },
+    {
+      "profile": "recall",
+      "variant": "base",
+      "precision": 1.0,
+      "recall": 0.72,
+      "f1": 0.8372093023255813,
+      "llm_calls": 27,
+      "total_cost_usd": 0.012555
+    },
+    {
+      "profile": "recall",
+      "variant": "fewshot",
+      "precision": 1.0,
+      "recall": 0.72,
+      "f1": 0.8372093023255813,
+      "llm_calls": 27,
+      "total_cost_usd": 0.013252
+    },
+    {
+      "profile": "recall",
+      "variant": "cot",
+      "precision": 1.0,
+      "recall": 0.72,
+      "f1": 0.8372093023255813,
+      "llm_calls": 27,
+      "total_cost_usd": 0.013488
+    }
+  ]
+}
